@@ -32,11 +32,7 @@ public class InitDB implements CommandLineRunner{
 			categoryService.addCategory(new Category(categories[i-1]));
 			for(int j=1;j<NUMBER_OF_PRODUCTS;j++) {				
 				String name= categories[i-1]+String.valueOf(i)+String.valueOf(j);
-				Product product=new Product(name,
-									  		description,
-									  		random.nextInt(300)+70,
-									  		"./assets/images/"+i+".jpg", 
-									  		categoryService.getCategory(new Long(i)));
+				Product product=new Product(name, description, random.nextInt(300)+70,"./assets/images/"+i+".jpg",categoryService.getCategory(new Long(i)));
 				productService.addProduct(product);
 			}
 		}	
