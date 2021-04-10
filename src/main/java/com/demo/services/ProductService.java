@@ -11,5 +11,6 @@ public interface ProductService {
 	public void deleteProduct(Long id);
 	public Product updateProduct(Long id, Product p);
 	public Product findById(Long id);
+	public List<Product> searchProduct(String keyword);
 	
 }

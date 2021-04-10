@@ -22,7 +22,7 @@ public class InitDB implements CommandLineRunner{
 
 	private final int NUMBER_OF_PRODUCTS= 18;
 	private String description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, qui.";
-	private String[] categories = {"Mobiles ", "Tablets ", "computers ", "Kameras ","Smartwatches "};
+	private String[] categories = {"Mobiles ", "Tablets ", "Computers ", "Kameras ","Smartwatches "};
 	private Random random = new Random();
 
 	@Override

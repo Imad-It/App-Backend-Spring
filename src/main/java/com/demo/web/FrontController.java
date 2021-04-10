@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -109,6 +110,11 @@ public class FrontController {
 		
 		productService.deleteProduct(idPro);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+	
+	@GetMapping("/products")
+	public ResponseEntity<List<Product>> searchProduct(@RequestParam String keyword){
+		return new ResponseEntity<List<Product>>(productService.searchProduct(keyword), HttpStatus.OK);
 	}
 
 }
