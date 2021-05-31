@@ -116,5 +116,10 @@ public class FrontController {
 	public ResponseEntity<List<Product>> searchProduct(@RequestParam String keyword){
 		return new ResponseEntity<List<Product>>(productService.searchProduct(keyword), HttpStatus.OK);
 	}
+	
+	@PutMapping("/{idCat}/products/{idPro}")
+	public ResponseEntity<Product> updateProduct(@PathVariable Long idCat, @RequestBody Product p) {
+		return new ResponseEntity<Product>(productService.updateProduct(idCat, p), HttpStatus.OK);
+	}
 
 }

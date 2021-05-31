@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.demo.dao.ProductRepository;
+import com.demo.entities.Category;
 import com.demo.entities.Product;
 
 @Service
@@ -11,6 +12,9 @@ public class ProductServiceImp implements ProductService{
 	
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private CategoryService categoryService;
 
 	@Override
 	public List<Product> getProducts() {
@@ -34,11 +38,13 @@ public class ProductServiceImp implements ProductService{
 	}
 
 	@Override
-	public Product updateProduct(Long id, Product p) {
-		Product product=productRepository.findById(id).get();
+	public Product updateProduct(Long idCategory, Product p) {
+		Product product=productRepository.findById(p.getId()).get();
+		Category category= categoryService.getCategory(idCategory);
 		product.setName(p.getName());
 		product.setDescription(p.getDescription());
 		product.setPrice(p.getPrice());
+		product.setCategory(category);
 		return productRepository.save(product);
 	}
 
